@@ -3,7 +3,8 @@ import Imagen from "./Imagen";
 import SinResultados from "./SinResultados";
 import { ContainerListadoImagenes } from "./styles/stylesListadoImagenes";
 
-const ListadoImagenes = ({ imagenesEncontradas }) => {
+const ListadoImagenes = ({ imagenesEncontradas, sinresultado }) => {
+  if(sinresultado) return <SinResultados></SinResultados>
   return (
     <ContainerListadoImagenes>
       {imagenesEncontradas &&

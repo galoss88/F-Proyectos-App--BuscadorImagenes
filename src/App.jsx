@@ -16,17 +16,20 @@ function App() {
   //paginad
   const [paginaactual, setPaginaActual] = useState(1);
   const [totalpaginas, setTotalPaginas] = useState(1);
-
+  const [sinresultado, setSinResultado] = useState(false)
   const refBuscador = useRef();
   useEffect(() => {
     if (nameImageSearch === "") return;
      
     const llamadaAPI = async () => {
+      setSinResultado(false)
       const key = "33532612-baea6baf6c660a37013418410";
       const imagesPerPage = 30;
       const url = `https://pixabay.com/api/?key=${key}&q=${nameImageSearch}&per_page=${imagesPerPage}&page=${paginaactual}`;
       const api = await axios.get(url);
       const data = api.data;
+      if(!data.hits.length)setSinResultado(true)
+      
       setImagenesEncontradas(data.hits);
       
       //calcular total paginas
@@ -59,7 +62,7 @@ function App() {
       <WrapperBuscador ref={refBuscador}>
         <Formulario setNameImageSearch={setNameImageSearch} />
       </WrapperBuscador>
-      <ListadoImagenes imagenesEncontradas={imagenesEncontradas}  />
+      <ListadoImagenes imagenesEncontradas={imagenesEncontradas} sinresultado={sinresultado}  />
       <WrapperButtonPagina>
         {paginaactual === 1 ? null : (
           <button onClick={() => paginaAnterior()}>&laquo; Anterior</button>
