@@ -3,13 +3,11 @@ import Imagen from "./Imagen";
 import SinResultados from "./SinResultados";
 import { ContainerListadoImagenes } from "./styles/stylesListadoImagenes";
 
-const ListadoImagenes = ({ imagenesEncontradas, conImagenes }) => {
-  if (!conImagenes && conImagenes !== 0) return <SinResultados />;
+const ListadoImagenes = ({ imagenesEncontradas }) => {
   return (
     <ContainerListadoImagenes>
-      {imagenesEncontradas?.map((i) => (
-        <Imagen key={i.id} i={i} />
-      ))}
+      {imagenesEncontradas &&
+        imagenesEncontradas.map((i) => <Imagen key={i.id} i={i} />)}
     </ContainerListadoImagenes>
   );
 };

@@ -12,8 +12,7 @@ import {
 function App() {
   const [nameImageSearch, setNameImageSearch] = useState("");
   const [imagenesEncontradas, setImagenesEncontradas] = useState([]);
-  //comprobar si no se encontraron imagenes
-  const [conImagenes, setConImagenes] = useState(0);
+
   //paginad
   const [paginaactual, setPaginaActual] = useState(1);
   const [totalpaginas, setTotalPaginas] = useState(1);
@@ -29,7 +28,7 @@ function App() {
       const api = await axios.get(url);
       const data = api.data;
       setImagenesEncontradas(data.hits);
-      imagenesEncontradas.length ? setConImagenes(true) : setConImagenes(false);
+      
       //calcular total paginas
       const calcularTotalPaginas = Math.ceil(data.totalHits / imagesPerPage);
       setTotalPaginas(calcularTotalPaginas);
@@ -60,7 +59,7 @@ function App() {
       <WrapperBuscador ref={refBuscador}>
         <Formulario setNameImageSearch={setNameImageSearch} />
       </WrapperBuscador>
-      <ListadoImagenes imagenesEncontradas={imagenesEncontradas} conImagenes={conImagenes} />
+      <ListadoImagenes imagenesEncontradas={imagenesEncontradas}  />
       <WrapperButtonPagina>
         {paginaactual === 1 ? null : (
           <button onClick={() => paginaAnterior()}>&laquo; Anterior</button>
