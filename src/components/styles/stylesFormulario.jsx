@@ -11,6 +11,7 @@ export const WrapperSearch = styled.div`
   display: flex;
   width: 60%;
   flex-direction: column;
+ 
 `;
 
 export const WrapperSubmit = styled.div`
@@ -30,10 +31,9 @@ export const InputSearch = styled.input`
   font-family: Georgia, "Times New Roman", Times, serif, "Arial Narrow", Arial,
     sans-serif, Helvetica, sans-serif;
   font-size: 1rem;
-  box-shadow: ${({error})=>error?"0 0 1rem red":null};
+  box-shadow: ${({ error }) => (error ? "0 0 1rem red" : null)};
   :focus {
     box-shadow: 0 0 0.2rem orange;
-    
   }
 `;
 
@@ -47,7 +47,7 @@ export const InputSubmit = styled.input`
   background-color: #af6a07;
   color: white;
   justify-content: center;
-  :hover{
+  :hover {
     background-color: orange;
     cursor: pointer;
   }

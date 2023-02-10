@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem 10rem;
+  @media (max-width: 760px) {
+    width: 100vw;
+    padding: 0;
+  }
 `;
 
 export const WrapperBuscador = styled.div`
@@ -16,6 +20,7 @@ export const WrapperBuscador = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
+ 
 `;
 export const WrapperButtonPagina = styled.div`
     display: flex;
